@@ -39,8 +39,6 @@ namespace InfoResourcesWebApplication
 
             modelBuilder.Entity<Author>(entity =>
             {
-                entity.Property(e => e.AuthorId).ValueGeneratedNever();
-
                 entity.Property(e => e.FirstName)
                     .IsRequired()
                     .HasMaxLength(32)
@@ -63,8 +61,6 @@ namespace InfoResourcesWebApplication
 
             modelBuilder.Entity<Department>(entity =>
             {
-                entity.Property(e => e.DepartmentId).ValueGeneratedNever();
-
                 entity.Property(e => e.DepartmentName)
                     .HasMaxLength(32)
                     .IsUnicode(true);
@@ -77,8 +73,6 @@ namespace InfoResourcesWebApplication
 
             modelBuilder.Entity<Faculty>(entity =>
             {
-                entity.Property(e => e.FacultyId).ValueGeneratedNever();
-
                 entity.Property(e => e.FacultyName)
                     .HasMaxLength(100)
                     .IsUnicode(true);
@@ -86,8 +80,6 @@ namespace InfoResourcesWebApplication
 
             modelBuilder.Entity<Resource>(entity =>
             {
-                entity.Property(e => e.ResourceId).ValueGeneratedNever();
-
                 entity.Property(e => e.AddDate)
                     .HasColumnType("date")
                     .HasDefaultValueSql("getdate()"); 
@@ -142,8 +134,6 @@ namespace InfoResourcesWebApplication
             {
                 entity.ToTable("ResourceTypes");
 
-                entity.Property(e => e.ResourceTypeId).ValueGeneratedNever();
-
                 entity.Property(e => e.ResourceTypeDescription).HasColumnType("text");
 
                 entity.Property(e => e.ResourceTypeName)
@@ -153,8 +143,6 @@ namespace InfoResourcesWebApplication
 
             modelBuilder.Entity<Subject>(entity =>
             {
-                entity.Property(e => e.SubjectId).ValueGeneratedNever();
-
                 entity.Property(e => e.Description)
                     .HasMaxLength(50)
                     .IsUnicode(true);

@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InfoResourcesWebApplication
 {
+    [Table("ResourceTypes")]
     public partial class ResourceType
     {
         public ResourceType()
