@@ -113,34 +113,34 @@ namespace InfoResourcesWebApplication
                     .WithMany(p => p.Resources)
                     .HasForeignKey(d => d.Type)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Resources_Resource Types");
+                    .HasConstraintName("FK_Resources_ResourceTypes");
             });
 
             modelBuilder.Entity<ResourceSubject>(entity =>
             {
                 entity.HasNoKey();
 
-                entity.ToTable("Resource_Subjects");
+                entity.ToTable("ResourceSubjects");
 
-                entity.HasIndex(e => new { e.ResourceId, e.SubjectId }, "IX_Resouce_Subjects")
+                entity.HasIndex(e => new { e.ResourceId, e.SubjectId }, "IX_ResourceSubjects")
                     .IsUnique();
 
                 entity.HasOne(d => d.Resource)
                     .WithMany()
                     .HasForeignKey(d => d.ResourceId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Resouce_Subjects_Resources");
+                    .HasConstraintName("FK_ResourceSubjects_Resources");
 
                 entity.HasOne(d => d.Subject)
                     .WithMany()
                     .HasForeignKey(d => d.SubjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Resouce_Subjects_Subject");
+                    .HasConstraintName("FK_ResourceSubjects_Subjects");
             });
 
             modelBuilder.Entity<ResourceType>(entity =>
             {
-                entity.ToTable("Resource Types");
+                entity.ToTable("ResourceTypes");
 
                 entity.Property(e => e.ResourceTypeId).ValueGeneratedNever();
 

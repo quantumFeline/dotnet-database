@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InfoResourcesWebApplication
 {
-    [Table("Resource_Subjects")]
+    [Table("ResourceSubjects")]
     public partial class ResourceSubject
     {
         public int SubjectId { get; set; }
