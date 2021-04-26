@@ -1,0 +1,65 @@
+﻿@model IEnumerable<InfoResourcesWebApplication.Resource>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ResourceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UrlAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Annotation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResourceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrlAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Annotation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ResourceId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ResourceId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ResourceId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
