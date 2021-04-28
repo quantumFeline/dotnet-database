@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Додати нову кафедру</a>
 </p>
 <table class="table">
     <thead>
@@ -28,7 +28,7 @@
                 @Html.DisplayFor(modelItem => item.DepartmentName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Faculty)
+                @Html.DisplayFor(modelItem => item.FacultyNavigation.FacultyName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.DepartmentId">Edit</a> |

@@ -22,7 +22,8 @@ namespace InfoResourcesWebApplication.Controllers
         // GET: Departments
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Department.ToListAsync());
+            var departmentDbContext = _context.Department.Include(n => n.FacultyNavigation);
+            return View(await departmentDbContext.ToListAsync());
         }
 
         // GET: Departments/Details/5

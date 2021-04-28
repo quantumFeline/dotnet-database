@@ -22,7 +22,7 @@ namespace InfoResourcesWebApplication.Controllers
         // GET: Authors
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Author.ToListAsync());
+            return View(await _context.Author.Include(n => n.DepartmentNavigation).ToListAsync());
         }
 
         // GET: Authors/Details/5

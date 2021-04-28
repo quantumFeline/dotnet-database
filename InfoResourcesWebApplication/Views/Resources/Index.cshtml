@@ -43,10 +43,10 @@
                 @Html.DisplayFor(modelItem => item.UrlAddress)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Type)
+                @Html.DisplayFor(modelItem => item.TypeNavigation.ResourceTypeName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Author)
+                @Html.DisplayFor(modelItem => item.AuthorNavigation.LastName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Annotation)
