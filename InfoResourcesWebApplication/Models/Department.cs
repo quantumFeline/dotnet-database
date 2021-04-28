@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
@@ -16,9 +17,12 @@ namespace InfoResourcesWebApplication
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DepartmentId { get; set; }
+        [Display(Name = "Назва кафедри")]
         public string DepartmentName { get; set; }
+        [Display(Name = "Факультет")]
         public int? Faculty { get; set; }
 
+        [ForeignKey("Faculty")]
         public virtual Faculty FacultyNavigation { get; set; }
         public virtual ICollection<Author> Authors { get; set; }
     }

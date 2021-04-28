@@ -17,5 +17,13 @@ namespace InfoResourcesWebApplication.Data
         public DbSet<InfoResourcesWebApplication.Resource> Resource { get; set; }
 
         public DbSet<InfoResourcesWebApplication.Author> Author { get; set; }
+
+        public DbSet<InfoResourcesWebApplication.Faculty> Faculty { get; set; }
+
+        public DbSet<InfoResourcesWebApplication.Department> Department { get; set; }
+
+        public DbSet<InfoResourcesWebApplication.ResourceType> ResourceType { get; set; }
+
+        public DbSet<InfoResourcesWebApplication.Subject> Subject { get; set; }
     }
 }
