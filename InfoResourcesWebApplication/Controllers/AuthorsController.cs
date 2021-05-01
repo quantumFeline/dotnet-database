@@ -22,7 +22,9 @@ namespace InfoResourcesWebApplication.Controllers
         // GET: Authors
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Author.Include(n => n.DepartmentNavigation).ToListAsync());
+            return View(await _context.Author
+                .Include(n => n.DepartmentNavigation)
+                .ToListAsync());
         }
 
         // GET: Authors/Details/5
@@ -34,6 +36,7 @@ namespace InfoResourcesWebApplication.Controllers
             }
 
             var author = await _context.Author
+                .Include(n => n.DepartmentNavigation)
                 .FirstOrDefaultAsync(m => m.AuthorId == id);
             if (author == null)
             {

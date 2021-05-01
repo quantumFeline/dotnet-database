@@ -134,7 +134,9 @@ namespace InfoResourcesWebApplication
             {
                 entity.ToTable("ResourceTypes");
 
-                entity.Property(e => e.ResourceTypeDescription).HasColumnType("text");
+                entity.Property(e => e.ResourceTypeDescription)
+                    .HasColumnType("text")
+                    .IsUnicode(true);
 
                 entity.Property(e => e.ResourceTypeName)
                     .HasMaxLength(32)

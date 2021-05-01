@@ -22,7 +22,10 @@ namespace InfoResourcesWebApplication.Controllers
         // GET: Resources
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Resource.Include(n => n.AuthorNavigation).Include(n => n.TypeNavigation).ToListAsync());
+            return View(await _context.Resource
+                .Include(n => n.AuthorNavigation)
+                .Include(n => n.TypeNavigation)
+                .ToListAsync());
         }
 
         // GET: Resources/Details/5
@@ -34,6 +37,8 @@ namespace InfoResourcesWebApplication.Controllers
             }
 
             var resource = await _context.Resource
+                .Include(n => n.AuthorNavigation)
+                .Include(n => n.TypeNavigation)
                 .FirstOrDefaultAsync(m => m.ResourceId == id);
             if (resource == null)
             {
