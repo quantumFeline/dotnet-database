@@ -46,6 +46,10 @@ namespace InfoResourcesWebApplication.Controllers
         // GET: Resources/Create
         public IActionResult Create()
         {
+            var authors_list = new SelectList(_context.Author.ToList(), "AuthorId", "LastName");
+            ViewData["authors_list"] = authors_list;
+            var types_list = new SelectList(_context.ResourceType.ToList(), "ResourceTypeId", "ResourceTypeName");
+            ViewData["types_list"] = types_list;
             return View();
         }
 
@@ -78,6 +82,10 @@ namespace InfoResourcesWebApplication.Controllers
             {
                 return NotFound();
             }
+            var authors_list = new SelectList(_context.Author.ToList(), "AuthorId", "LastName");
+            ViewData["authors_list"] = authors_list;
+            var types_list = new SelectList(_context.ResourceType.ToList(), "ResourceTypeId", "ResourceTypeName");
+            ViewData["types_list"] = types_list;
             return View(resource);
         }
 
@@ -142,7 +150,7 @@ namespace InfoResourcesWebApplication.Controllers
             var resource = await _context.Resource.FindAsync(id);
             _context.Resource.Remove(resource);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index), nameof(Author), new { id = resource.ResourceId, name = resource.ResourceName});
+            return RedirectToAction(nameof(Index), nameof(Resource), new { id = resource.ResourceId, name = resource.ResourceName});
         }
 
         private bool ResourceExists(int id)

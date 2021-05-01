@@ -15,6 +15,7 @@ namespace InfoResourcesWebApplication
             Authors = new HashSet<Author>();
         }
 
+        [Display(Name = "Id")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DepartmentId { get; set; }
         [Display(Name = "Назва кафедри")]

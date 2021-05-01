@@ -20,7 +20,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Faculty" class="control-label"></label>
-                <input asp-for="Faculty" class="form-control" />
+                <!-- <input asp-for="Faculty" class="form-control" /> -->
+                @Html.DropDownListFor(m => m.Faculty, (IEnumerable<SelectListItem>)ViewData["faculty_list"])
                 <span asp-validation-for="Faculty" class="text-danger"></span>
             </div>
             <div class="form-group">

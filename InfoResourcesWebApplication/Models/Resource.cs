@@ -24,7 +24,7 @@ namespace InfoResourcesWebApplication
         public int Author { get; set; }
         [Display(Name = "Коротка аннотація")]
         public string Annotation { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime AddDate { get; set; }
 
         [ForeignKey("Author")]

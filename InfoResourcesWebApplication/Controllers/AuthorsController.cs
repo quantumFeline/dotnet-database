@@ -46,6 +46,8 @@ namespace InfoResourcesWebApplication.Controllers
         // GET: Authors/Create
         public IActionResult Create()
         {
+            var department_list = new SelectList(_context.Department.ToList(), "DepartmentId", "DepartmentName");
+            ViewData["department_list"] = department_list;
             return View();
         }
 
@@ -78,6 +80,8 @@ namespace InfoResourcesWebApplication.Controllers
             {
                 return NotFound();
             }
+            var department_list = new SelectList(_context.Department.ToList(), "DepartmentId", "DepartmentName");
+            ViewData["department_list"] = department_list;
             return View(author);
         }
 

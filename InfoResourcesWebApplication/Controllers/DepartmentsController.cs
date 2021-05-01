@@ -34,7 +34,8 @@ namespace InfoResourcesWebApplication.Controllers
                 return NotFound();
             }
 
-            var department = await _context.Department
+            Department department = await _context.Department
+                .Include(n => n.FacultyNavigation)
                 .FirstOrDefaultAsync(m => m.DepartmentId == id);
             if (department == null)
             {
@@ -47,6 +48,8 @@ namespace InfoResourcesWebApplication.Controllers
         // GET: Departments/Create
         public IActionResult Create()
         {
+            var faculty_list = new SelectList(_context.Faculty.ToList(), "FacultyId", "FacultyName");
+            ViewData["faculty_list"] = faculty_list;
             return View();
         }
 
@@ -79,6 +82,8 @@ namespace InfoResourcesWebApplication.Controllers
             {
                 return NotFound();
             }
+            var faculty_list = new SelectList(_context.Faculty.ToList(), "FacultyId", "FacultyName");
+            ViewData["faculty_list"] = faculty_list;
             return View(department);
         }
 

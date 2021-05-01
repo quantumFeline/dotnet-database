@@ -15,6 +15,7 @@ namespace InfoResourcesWebApplication
             Departments = new HashSet<Department>();
         }
 
+        [Display(Name = "Id")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int FacultyId { get; set; }
         [Display(Name = "Назва факультету")]
