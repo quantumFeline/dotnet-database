@@ -46,7 +46,7 @@ namespace InfoResourcesWebApplication.Controllers
         // GET: Resources/Create
         public IActionResult Create()
         {
-            var authors_list = new SelectList(_context.Author.ToList(), "AuthorId", "LastName");
+            var authors_list = new SelectList(_context.Author.ToList(), "AuthorId", "FullName");
             ViewData["authors_list"] = authors_list;
             var types_list = new SelectList(_context.ResourceType.ToList(), "ResourceTypeId", "ResourceTypeName");
             ViewData["types_list"] = types_list;
@@ -82,7 +82,7 @@ namespace InfoResourcesWebApplication.Controllers
             {
                 return NotFound();
             }
-            var authors_list = new SelectList(_context.Author.ToList(), "AuthorId", "LastName");
+            var authors_list = new SelectList(_context.Author.ToList(), "AuthorId", "FullName");
             ViewData["authors_list"] = authors_list;
             var types_list = new SelectList(_context.ResourceType.ToList(), "ResourceTypeId", "ResourceTypeName");
             ViewData["types_list"] = types_list;

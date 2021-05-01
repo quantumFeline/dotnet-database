@@ -30,5 +30,13 @@ namespace InfoResourcesWebApplication
         [ForeignKey("Department")]
         public virtual Department DepartmentNavigation { get; set; }
         public virtual ICollection<Resource> Resources { get; set; }
+
+        public string FullName
+        {
+            get
+            {
+                return LastName + ", " + FirstName + " " + Patronymic;
+            }
+        }
     }
 }
