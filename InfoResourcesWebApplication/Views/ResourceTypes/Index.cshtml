@@ -55,7 +55,7 @@
             $.get('/api/Charts/JsonTypeStats', function(JsonData) {
                 data = google.visualization.arrayToDataTable(JsonData, false);
                 var option = {
-                    title: "Співвідношення кількості книжок та категорій",
+                    title: "Загальна кількість ресурсів кожного типу",
                     width: 500,
                     height: 400
                 };
