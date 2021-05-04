@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InfoResourcesWebApplication;
 using InfoResourcesWebApplication.Data;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using ClosedXML.Excel;
 
 namespace InfoResourcesWebApplication.Controllers
 {
@@ -162,5 +165,86 @@ namespace InfoResourcesWebApplication.Controllers
         {
             return _context.Resource.Any(e => e.ResourceId == id);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Import(IFormFile fileExcel)
+        {
+            if (ModelState.IsValid && fileExcel == null)
+            {
+                using (var stream = new FileStream(fileExcel.FileName, FileMode.Create))
+                {
+                    await fileExcel.CopyToAsync(stream);
+                    ImportFile(fileExcel, stream);
+                }
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public void ImportFile(IFormFile fileExcel, FileStream stream)
+        {
+            
+            using (XLWorkbook workBook = new XLWorkbook(stream, XLEventTracking.Disabled))
+            {
+                foreach (IXLWorksheet worksheet in workBook.Worksheets)
+                {
+                    ResourceType new_res;
+                    List<ResourceType> types = (from res in _context.ResourceType
+                                where res.ResourceTypeName.Contains(worksheet.Name)
+                                select res).ToList();
+
+                    if (types.Count > 0)
+                    {
+                        new_res = types[0];
+                    }
+                    else
+                    {
+                        new_res = new ResourceType();
+                        new_res.ResourceTypeName = worksheet.Name;
+                        new_res.ResourceTypeDescription = "from EXCEL";
+                        _context.ResourceType.Add(new_res);
+                    }
+                    
+                    foreach (IXLRow row in worksheet.RowsUsed().Skip(1))
+                    {
+                        try
+                        {
+                            Resource resource = new Resource();
+                            resource.ResourceName = row.Cell(1).Value.ToString();
+                            resource.Annotation = row.Cell(4).Value.ToString();
+                            _context.Resource.Add(resource);
+
+                            // Author
+                            string authorName = row.Cell(2).Value.ToString();
+                            if (authorName.Length > 0)
+                            {
+                                var a = (from aut in _context.Author
+                                            where aut.FullName.Contains(authorName)
+                                            select aut).ToList();
+
+                                if (a.Count > 0)
+                                {
+                                    resource.Author = a[0].AuthorId;
+                                }
+                                else
+                                {
+                                    throw new InvalidDataException("Author not found in the database");
+                                }
+                            }
+
+                            // ResourceType
+                        }
+                        catch (Exception e)
+                        {
+                            //logging самостійно :)
+
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
