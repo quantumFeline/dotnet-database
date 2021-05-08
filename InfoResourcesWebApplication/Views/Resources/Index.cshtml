@@ -34,6 +34,7 @@
         </tr>
     </thead>
     <tbody>
+
 @foreach (var item in Model) {
         <tr>
             <td>
@@ -63,3 +64,24 @@
 }
     </tbody>
 </table>
+
+<!-- Import -->
+<div>
+    <h3>Оберіть excel-файл для заватаження</h3>
+    @using (Html.BeginForm("Import", "Resources", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm-excel" }))
+    {
+        <div>
+            Завантажте Excel-файл:
+            <input type="file" name="fileExcel" id="fileExcel" />
+            <div>
+                <input type="submit" value="Завантажити" />
+            </div>
+        </div>
+    }
+</div>
+
+<!--Export-->
+<div>
+    <h3>Завантаження інформації в файл</h3>
+    <a asp-action="Export">Завантажити</a>
+</div>
