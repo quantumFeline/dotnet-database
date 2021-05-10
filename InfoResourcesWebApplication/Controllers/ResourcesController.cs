@@ -277,7 +277,7 @@ namespace InfoResourcesWebApplication.Controllers
                                         department = departments[0];
                                     }
                                     else {
-                                        throw new InvalidDataException("Unknown author department");
+                                        throw new InvalidDataException("Unknown author UserDepartment");
                                     }
 
                                     author.Department = department.DepartmentId;

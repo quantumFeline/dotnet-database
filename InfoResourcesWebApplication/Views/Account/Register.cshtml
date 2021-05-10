@@ -1,4 +1,4 @@
-﻿@model InfoResourcesWebApplication.RegisterViewModel
+﻿@model InfoResourcesWebApplication.ViewModels.RegisterViewModel
 
 @{
     ViewData["Title"] = "Add user";
@@ -13,20 +13,20 @@
         <input asp-for="Email" />
         <span asp-validation-for="Email"></span>
     </div>
-    <div>
-        <label asp-for="department"></label><br />
-        <input asp-for="department" />
-        <span asp-validation-for="department"></span>
-    </div>
+    <!--<div>
+        <label asp-for="UserDepartment"></label><br />
+        <input asp-for="UserDepartment" />
+        <span asp-validation-for="UserDepartment"></span>
+    </div> -->
     <div>
         <label asp-for="Password"></label><br />
         <input asp-for="Password" />
         <span asp-validation-for="Password"></span>
     </div>
     <div>
-        <label asp-for="passwordConfirm"></label><br />
-        <input asp-for="passwordConfirm" />
-        <span asp-validation-for="passwordConfirm"></span>
+        <label asp-for="PasswordConfirm"></label><br />
+        <input asp-for="PasswordConfirm" />
+        <span asp-validation-for="PasswordConfirm"></span>
     </div>
     <div>
         <input type="submit" value="Реєстрація" />

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace InfoResourcesWebApplication
+namespace InfoResourcesWebApplication.ViewModels
 {
     public class RegisterViewModel
     {
@@ -19,20 +19,20 @@ namespace InfoResourcesWebApplication
         public string Email { get; set; }
 
 
-        [Required]
+        //[Required]
         [Display(Name = "Department")]
-        public Department department { get; set; }
+        public Department UserDepartment { get; set; }
 
 
         [Required]
         [Display(Name = "Password")]
         [DataType(DataType.Password)]
-        public string password { get; set; }
+        public string Password { get; set; }
 
         [Required]
         [Compare("Password", ErrorMessage = "Passwords don't match")]
         [Display(Name = "Password confirmation")]
         [DataType(DataType.Password)]
-        public string passwordConfirm { get; set; }
+        public string PasswordConfirm { get; set; }
     }
 }

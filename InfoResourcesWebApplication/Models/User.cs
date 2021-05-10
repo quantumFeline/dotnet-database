@@ -8,6 +8,6 @@ namespace InfoResourcesWebApplication.Models
 {
     public class User : IdentityUser
     {
-        public Department department;
+        //public Department department;
     }
 }

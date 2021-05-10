@@ -1,5 +1,5 @@
 ﻿using InfoResourcesWebApplication.Models;
-//using InfoResourcesWebApplication.ViewModels;
+using InfoResourcesWebApplication.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -24,18 +24,20 @@ namespace InfoResourcesWebApplication.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                User user = new User { Email = model.Email, UserName = model.Email, department = model.department };
-                var result = await _userManager.CreateAsync(user, model.password);
+                User user = new User { Email = model.Email, UserName = model.Email/*, department = model.UserDepartment*/ };
+                var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, false);
