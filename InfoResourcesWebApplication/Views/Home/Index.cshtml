@@ -14,10 +14,13 @@
         <h1 class="display-4">Ласкаво просимо до нашої бази!<br /> All your base are belong to us.</h1>
         <p><a href="/Resources">Ресурси</a></p>
         <p><a href="/Authors">Автори</a></p>
-        <p><a href="/Subjects">Предмети</a></p>
-        <p><a href="/ResourceTypes">Типи ресурсів</a></p>
-        <p><a href="/Departments">Кафедри</a></p>
-        <p><a href="/Faculties">Факультети</a></p>
+        @if (User.IsInRole("admin"))
+        {
+            <p><a href="/Subjects">Предмети</a></p>
+            <p><a href="/ResourceTypes">Типи ресурсів</a></p>
+            <p><a href="/Departments">Кафедри</a></p>
+            <p><a href="/Faculties">Факультети</a></p>
+        }
         <!-- <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> -->
     </div>
 }

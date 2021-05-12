@@ -1,5 +1,6 @@
 ﻿using InfoResourcesWebApplication.Models;
 using InfoResourcesWebApplication.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,8 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace InfoResourcesWebApplication.Controllers
-{
-    public class AccountController : Controller
+{    public class AccountController : Controller
     {
         public IActionResult Index()
         {

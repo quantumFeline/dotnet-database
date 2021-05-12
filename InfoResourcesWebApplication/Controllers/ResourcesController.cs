@@ -10,9 +10,11 @@ using InfoResourcesWebApplication.Data;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using ClosedXML.Excel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InfoResourcesWebApplication.Controllers
 {
+    [Authorize(Roles = "admin, user")]
     public class ResourcesController : Controller
     {
         private readonly InfoResourcesWebApplicationContext _context;

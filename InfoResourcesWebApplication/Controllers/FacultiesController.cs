@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InfoResourcesWebApplication;
 using InfoResourcesWebApplication.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InfoResourcesWebApplication.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class FacultiesController : Controller
     {
         private readonly InfoResourcesWebApplicationContext _context;
