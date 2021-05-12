@@ -36,7 +36,7 @@ namespace InfoResourcesWebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User { Email = model.Email, UserName = model.Email/*, department = model.UserDepartment*/ };
+                User user = new User { Email = model.Email, UserName = model.Email};
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

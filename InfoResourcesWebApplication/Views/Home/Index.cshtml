@@ -20,6 +20,7 @@
             <p><a href="/ResourceTypes">Типи ресурсів</a></p>
             <p><a href="/Departments">Кафедри</a></p>
             <p><a href="/Faculties">Факультети</a></p>
+            <p><a href="/Roles">Ролі</a></p>
         }
         <!-- <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> -->
     </div>
@@ -27,6 +28,8 @@
 
 else
 {
-    <a asp-controller="Account" asp-action="Login">Вхід</a><br /><br />
+    <a asp-controller="Account" asp-action="Login">Вхід</a>
+    <br />
+    <br />
     <a asp-controller="Account" asp-action="Register">Реєстрація</a>
 }
