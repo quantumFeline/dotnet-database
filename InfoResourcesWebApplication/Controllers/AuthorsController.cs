@@ -134,6 +134,7 @@ namespace InfoResourcesWebApplication.Controllers
             }
 
             var author = await _context.Author
+                .Include(n => n.DepartmentNavigation)
                 .FirstOrDefaultAsync(m => m.AuthorId == id);
             if (author == null)
             {

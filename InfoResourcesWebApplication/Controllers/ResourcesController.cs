@@ -143,6 +143,8 @@ namespace InfoResourcesWebApplication.Controllers
             }
 
             var resource = await _context.Resource
+                .Include(n => n.AuthorNavigation)
+                .Include(n => n.TypeNavigation)
                 .FirstOrDefaultAsync(m => m.ResourceId == id);
             if (resource == null)
             {
@@ -160,7 +162,8 @@ namespace InfoResourcesWebApplication.Controllers
             var resource = await _context.Resource.FindAsync(id);
             _context.Resource.Remove(resource);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index), nameof(Resource), new { id = resource.ResourceId, name = resource.ResourceName});
+            //return RedirectToAction(nameof(Index), nameof(Resource), new { id = resource.ResourceId, name = resource.ResourceName});
+            return RedirectToAction(nameof(Index));
         }
 
         private bool ResourceExists(int id)

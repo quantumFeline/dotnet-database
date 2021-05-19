@@ -16,16 +16,10 @@
                 @Html.DisplayNameFor(model => model.ResourceName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UrlAddress)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Type)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Author)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Annotation)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.AddDate)
@@ -41,16 +35,10 @@
                 @Html.DisplayFor(modelItem => item.ResourceName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UrlAddress)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.TypeNavigation.ResourceTypeName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.AuthorNavigation.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Annotation)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.AddDate)

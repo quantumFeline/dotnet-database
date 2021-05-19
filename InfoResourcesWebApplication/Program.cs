@@ -14,7 +14,7 @@ namespace InfoResourcesWebApplication
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
 
@@ -25,7 +25,7 @@ namespace InfoResourcesWebApplication
                 {
                     var userManager = services.GetRequiredService<UserManager<User>>();
                     var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                    await RoleInitialiser.InitializeAsync(userManager, rolesManager);
+                    RoleInitialiser.InitializeAsync(userManager, rolesManager).Wait();
                 }
                 catch (Exception ex)
                 {

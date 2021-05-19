@@ -16,8 +16,25 @@ namespace InfoResourcesWebApplication
         [Display(Name = "Назва ресурсу")]
         public string ResourceName { get; set; }
 
+        private string _urlAdress;
         [Display(Name = "URL")]
-        public string UrlAddress { get; set; }
+        public string UrlAddress
+        {
+            get { return _urlAdress; }
+            set
+            {
+                if (value != null)
+                {
+                    _urlAdress = Uri.EscapeUriString(value);
+                }
+                else
+                {
+                    _urlAdress = null;
+                }
+
+            }
+        }
+
         [Display(Name = "Тип ресурсу")]
         public int Type { get; set; }
         [Display(Name = "Автор")]

@@ -93,7 +93,7 @@ namespace InfoResourcesWebApplication
 
                 entity.Property(e => e.UrlAddress)
                     .IsRequired()
-                    .HasMaxLength(50)
+                    .HasMaxLength(300)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.AuthorNavigation)

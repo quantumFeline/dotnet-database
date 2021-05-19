@@ -133,6 +133,7 @@ namespace InfoResourcesWebApplication.Controllers
             }
 
             var department = await _context.Department
+                .Include(n => n.FacultyNavigation)
                 .FirstOrDefaultAsync(m => m.DepartmentId == id);
             if (department == null)
             {
