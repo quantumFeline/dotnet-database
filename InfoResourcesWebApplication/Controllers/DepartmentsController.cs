@@ -64,6 +64,17 @@ namespace InfoResourcesWebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
+                Department existingDepartment = await _context.Department.SingleOrDefaultAsync(d =>
+                d.DepartmentName == department.DepartmentName && d.Faculty == department.Faculty);
+
+                if (existingDepartment != null)
+                {
+                    ModelState.AddModelError(string.Empty, "This department already exists.");
+                    var faculty_list = new SelectList(_context.Faculty.ToList(), "FacultyId", "FacultyName");
+                    ViewData["faculty_list"] = faculty_list;
+                    return View(department);
+                }
+
                 _context.Add(department);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

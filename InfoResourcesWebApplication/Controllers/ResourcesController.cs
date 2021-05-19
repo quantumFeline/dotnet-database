@@ -72,6 +72,19 @@ namespace InfoResourcesWebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
+                Resource existingResource = await _context.Resource.SingleOrDefaultAsync(r =>
+                (r.UrlAddress == resource.UrlAddress && r.UrlAddress != null) || r.ResourceName == resource.ResourceName);
+
+                if (existingResource != null)
+                {
+                    ModelState.AddModelError(string.Empty, "This resource already exists in the base.");
+                    var authors_list = new SelectList(_context.Author.ToList(), "AuthorId", "FullName");
+                    ViewData["authors_list"] = authors_list;
+                    var types_list = new SelectList(_context.ResourceType.ToList(), "ResourceTypeId", "ResourceTypeName");
+                    ViewData["types_list"] = types_list;
+                    return View(resource);
+                }
+
                 _context.Add(resource);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

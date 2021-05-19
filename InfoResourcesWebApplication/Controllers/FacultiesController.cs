@@ -60,6 +60,15 @@ namespace InfoResourcesWebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
+                Faculty existingFaculty = await _context.Faculty.SingleOrDefaultAsync(f =>
+                f.FacultyName == faculty.FacultyName);
+
+                if (existingFaculty != null)
+                {
+                    ModelState.AddModelError(string.Empty, "This faculty already exists.");
+                    return View(faculty);
+                }
+
                 _context.Add(faculty);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
