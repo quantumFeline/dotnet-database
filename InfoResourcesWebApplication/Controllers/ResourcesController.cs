@@ -186,21 +186,21 @@ namespace InfoResourcesWebApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Import(IFormFile fileExcel)
+        public async Task<IActionResult> Import(IFormFile fileCSV)
         {
-            if (ModelState.IsValid && fileExcel != null)
+            if (ModelState.IsValid && fileCSV != null)
             {
-                using (var stream = new FileStream(fileExcel.FileName, FileMode.Create))
+                using (var stream = new FileStream(fileCSV.FileName, FileMode.Create))
                 {
-                    await fileExcel.CopyToAsync(stream);
-                    ImportFile(fileExcel, stream);
+                    await fileCSV.CopyToAsync(stream);
+                    ImportFile(fileCSV, stream);
                 }
                 await _context.SaveChangesAsync();
                 ViewData["ImportMessage"] = "File imported succefully.";
             } else
             {
                 ViewData["ImportMessage"] = "Error while importing file: ";
-                if (fileExcel == null)
+                if (fileCSV == null)
                 {
                     ViewData["ImportMessage"] += "file is null";
                 } else
