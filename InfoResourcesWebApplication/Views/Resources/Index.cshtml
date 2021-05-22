@@ -55,11 +55,11 @@
 
 <!-- Import -->
 <div>
-    <h3>Оберіть excel-файл для заватаження</h3>
+    <h3>Оберіть CSV-файл для завантаження</h3>
     @using (Html.BeginForm("Import", "Resources", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm-excel" }))
     {
         <div>
-            Завантажте Excel-файл:
+            Завантажте CSV-файл:
             <input type="file" name="fileExcel" id="fileExcel" />
             <div>
                 <input type="submit" value="Завантажити" />
@@ -70,6 +70,6 @@
 
 <!--Export-->
 <div>
-    <h3>Завантаження інформації в файл</h3>
-    <a asp-action="Export">Завантажити</a>
+    <h3>Вивантаження інформації в файл</h3>
+    <a asp-action="Export">Вивантажити</a>
 </div>
